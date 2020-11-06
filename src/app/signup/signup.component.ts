@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { SessionService } from '../session.service';
-import {ProgManager, Student} from './interfaces'
+import {ProgManager, Student, User} from './interfaces'
 
 @Component({
   selector: 'app-signup',
@@ -13,6 +13,7 @@ import {ProgManager, Student} from './interfaces'
 export class SignupComponent implements OnInit {
   email: string;
   password:string;
+  sessionUser: User;
 
   constructor( private router:Router, private aSesionService: SessionService) { }
 
@@ -20,8 +21,16 @@ export class SignupComponent implements OnInit {
   }
 
   onSubmit() {
-      let aManager : ProgManager = {email: "test@email", password: "testpassword"}
-      this.aSesionService.setProgramManager(aManager);
+      if (this.email.includes("@gmail.com")) {
+        let aParticipant : Student = {email: this.email, password: this.password, userType:"Student"};
+        this.sessionUser = {user: aParticipant};
+      
+      } else {
+        let aManager : ProgManager = {email: this.email, password: this.password, userType:"Program Manager"};
+        this.sessionUser = {user: aManager};
+      }
+
+      this.aSesionService.setCurrentUserInSession(this.sessionUser);
       this.router.navigate(['/dashboard'])
   }
 

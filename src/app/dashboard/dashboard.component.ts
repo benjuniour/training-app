@@ -13,7 +13,7 @@ export class DashboardComponent implements OnInit {
   constructor(private sessionService: SessionService) { }
 
   ngOnInit(): void {
-    this.toDisplay = this.sessionService.getProgramManagerEmail()
+    this.toDisplay = this.sessionService.getCurrentUserInSession()
   }
 
 }
