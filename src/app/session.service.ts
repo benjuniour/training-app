@@ -1,21 +1,22 @@
 import { Injectable } from '@angular/core';
-import { ProgManager, Student } from './signup/interfaces';
+import { ProgManager, Student, User } from './signup/interfaces';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SessionService {
-
-  aProgramManger: ProgManager;
+  
+  aUserInSession: User;
 
   constructor() { 
   }
 
-  setProgramManager(aprogManager: ProgManager) {
-    this.aProgramManger = aprogManager
+  setCurrentUserInSession(aTypeOfUser: User) {
+    this.aUserInSession = aTypeOfUser;
   }
 
-  getProgramManagerEmail() {
-    return this.aProgramManger.email;
+  getCurrentUserInSession () {
+    return `Welcome to the dashboard. You are a ${this.aUserInSession.user.userType}
+    with email ${this.aUserInSession.user.email}`;
   }
 }
