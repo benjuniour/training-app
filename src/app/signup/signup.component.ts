@@ -40,7 +40,7 @@ export class SignupComponent implements OnInit {
                 this.router.navigate(['/students'])
             } else {
                 this.isSignInErr = true;
-                this.sigInErrorMessage = "Invalid Student Email"
+                this.sigInErrorMessage = "Invalid Student email or password"
             }
 
         //user is a program manager
@@ -49,7 +49,7 @@ export class SignupComponent implements OnInit {
               console.log("Came here, created a a manager")
               //manager is a valid manager
               if (this.aSesionService.isManagerValid(aManager)) {
-                // this.router.navigate(['/students']) change to prog manager
+                this.router.navigate(['/progManager'])
 
               } else {
                 console.log("Came here, valid entry but not program manger")

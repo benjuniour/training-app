@@ -10,6 +10,7 @@ export interface ProgramEvent {
 }
 
 export interface ProgManager {
+  name?: string,
   email: string,
   password: string,
   userType?: string,
@@ -77,7 +78,8 @@ let participant2: Student = {
 // }
 
 let mainProgManager: ProgManager = {
-  email: "masterprogman@app.com",
+  name: "Master Program Manager",
+  email: "masterprog@app.com",
   password: "master"
 }
 

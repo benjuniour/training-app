@@ -7,13 +7,15 @@ import { AppComponent } from './app.component';
 import { SignupComponent } from './signup/signup.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { StudentPageComponent } from './student-page/student-page.component';
+import { ProgPageComponent } from './prog-page/prog-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SignupComponent,
     DashboardComponent,
-    StudentPageComponent
+    StudentPageComponent,
+    ProgPageComponent
   ],
   imports: [
     BrowserModule,

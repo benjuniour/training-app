@@ -1,0 +1,22 @@
+<app-dashboard></app-dashboard>
+<h3>Welcome {{progManangerName}}</h3>
+<h5>Your email is {{progManagerEmail}}</h5>
+
+<p>You're in Program Manager Dashboard</p>
+<p>------------------------------------------</p>
+
+<div *ngFor="let studParticipant of listOfParticipants">
+    <p>{{studParticipant.name}}</p>
+    <p>{{studParticipant.email}}</p>
+    <div *ngFor="let studentEvent of studParticipant.events">
+        <p>{{studentEvent.event_title}}</p>
+        <p>{{studentEvent.event_completion}}</p>
+        <p>{{studentEvent.location}}</p>
+        <p>{{studentEvent.leader}}</p>
+        <p>{{studentEvent.event_id}}</p>
+    </div>
+    <br>
+    <p>Total Progress:{{computeOverallProgress(studParticipant.events)}}%</p>
+    <p>------------------------------------------</p>
+    <!-- <button (click)="AddNewParticipant">Completed</button> -->
+</div>
