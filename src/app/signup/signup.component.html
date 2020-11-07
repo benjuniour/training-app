@@ -25,7 +25,9 @@
                 <input type="checkbox" name="sign-reminder">
                 <label>Remember me the next time I signup</label>
             </div>
-        
+            
+            <p *ngIf="isSignInErr">{{sigInErrorMessage}}</p>
+
             <div class="sign-up-btn">
                 <!-- <button type="submit" [disabled]="!f.valid">Sign Up</button> -->
                 <!-- <button type="submit" [routerLink]="['/dashboard']">Sign Up</button> -->
