@@ -7,7 +7,10 @@
     <p>{{studentEvent.event_completion}}</p>
     <p>{{studentEvent.location}}</p>
     <p>{{studentEvent.leader}}</p>
+    <p>{{studentEvent.event_id}}</p>
     <br>
+
+    <button (click)="updateEventStatus(studentEvent.event_id)">Completed</button>
 </div>
 
 

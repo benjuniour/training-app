@@ -40,7 +40,7 @@ export class SignupComponent implements OnInit {
                 this.router.navigate(['/students'])
             } else {
                 this.isSignInErr = true;
-                this.sigInErrorMessage = "Email or Password cannot be validated"
+                this.sigInErrorMessage = "Invalid Student Email"
             }
 
         //user is a program manager
@@ -54,7 +54,7 @@ export class SignupComponent implements OnInit {
               } else {
                 console.log("Came here, valid entry but not program manger")
                 this.isSignInErr = true;
-                this.sigInErrorMessage = "Email or Password cannot be validated"
+                this.sigInErrorMessage = "Invalid Program Manger email or password"
               }
               
         }

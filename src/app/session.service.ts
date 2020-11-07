@@ -4,6 +4,7 @@ import { Injectable } from '@angular/core';
 export interface ProgramEvent {
   event_title: string;
   event_completion: string;
+  event_id: number;
   location: string;
   leader: string;
 }
@@ -25,40 +26,55 @@ export interface Student {
 
 //-------------Hardcoded Data-------------------
 
-let event1: ProgramEvent = {
-  event_title: "First Event",
-  event_completion: "0%",
-  location: "Space 1",
-  leader: "Leader 1",
-}
-
-let event2: ProgramEvent = {
-  event_title: "Second Event",
-  event_completion: "0%",
-  location: "Space 2",
-  leader: "Leader 2",
-}
-
 let participant1: Student = {
     name: "Bernard Boadu",
     email: "bernardboadu@gmail.com",
     password: "password1",
-    events: [event1, event2]
+    events: [
+      {
+        event_title: "Fun Event",
+        event_id: 1,
+        event_completion: "No",
+        location: "Space 1",
+        leader: "Leader 1",
+      }
+      , {
+        event_title: "Fun Event II",
+        event_id: 11,
+        event_completion: "No",
+        location: "Space 1",
+        leader: "Leader 1",
+      }]
 }
 
 let participant2: Student = {
   name: "Alfred Marfo",
   email: "alfredmarfo@gmail.com",
   password: "password2",
-  events: [event1, event2]
+  events: [
+    {
+      event_title: "Fun Event",
+      event_id: 2,
+      event_completion: "No",
+      location: "Space 1",
+      leader: "Leader 1",
+    }, 
+    
+    {
+      event_title: "Fun Event II",
+      event_id: 21,
+      event_completion: "No",
+      location: "Space 1",
+      leader: "Leader 1",
+    }]
 }
 
-let participant3: Student = {
-  name: "Carmen Menson",
-  email: "carmenmenson@gmail.com",
-  password: "password3",
-  events: [event1, event2]
-}
+// let participant3: Student = {
+//   name: "Carmen Menson",
+//   email: "carmenmenson@gmail.com",
+//   password: "password3",
+//   events: [event1, event2]
+// }
 
 let mainProgManager: ProgManager = {
   email: "masterprogman@app.com",
@@ -79,7 +95,7 @@ export class SessionService {
 
 
   constructor() { 
-    this.enrolledParticpants = [participant1, participant2, participant3];
+    this.enrolledParticpants = [participant1, participant2];
     this.listOfProgManagers = [mainProgManager];
   }
 
@@ -125,6 +141,11 @@ export class SessionService {
     }
     return false;
   }
+
+  // //update event status
+  // updateEventStatus(anEvent: ProgramEvent) : void {
+  //   for(let event of this.aUserInSession.events)
+  // }
 
   //gets the list of prog managers
   getProgManagers(): ProgManager[] {
