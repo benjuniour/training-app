@@ -1,0 +1,13 @@
+<app-dashboard></app-dashboard>
+<h3>Welcome {{studentName}}</h3>
+<h5>Your email is {{studentEmail}}</h5>
+
+<div *ngFor="let studentEvent of studentEvents">
+    <p>{{studentEvent.event_title}}</p>
+    <p>{{studentEvent.event_completion}}</p>
+    <p>{{studentEvent.location}}</p>
+    <p>{{studentEvent.leader}}</p>
+    <br>
+</div>
+
+

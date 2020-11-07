@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { SessionService } from '../session.service';
-import {ProgManager, Student, User} from './interfaces'
+import { ProgManager, SessionService, Student } from '../session.service';
 
 @Component({
   selector: 'app-signup',
@@ -13,7 +12,9 @@ import {ProgManager, Student, User} from './interfaces'
 export class SignupComponent implements OnInit {
   email: string;
   password:string;
-  sessionUser: User;
+  sessionUser: Student | ProgManager; 
+  isSignInErr: boolean = false;
+  sigInErrorMessage: string;
 
   constructor( private router:Router, private aSesionService: SessionService) { }
 
@@ -21,17 +22,44 @@ export class SignupComponent implements OnInit {
   }
 
   onSubmit() {
-      if (this.email.includes("@gmail.com")) {
-        let aParticipant : Student = {email: this.email, password: this.password, userType:"Student"};
-        this.sessionUser = {user: aParticipant};
-      
-      } else {
-        let aManager : ProgManager = {email: this.email, password: this.password, userType:"Program Manager"};
-        this.sessionUser = {user: aManager};
-      }
+    //makes sure that an email and password is entered first
+    if (this.email === "" 
+            || this.email === undefined 
+            || this.password === "" 
+            || this.password === undefined) {
+      this.isSignInErr = true;
+      this.sigInErrorMessage = "Enter an email or password to proceed"
+    
+    } else {
+        //user is a participant
+        if (this.email.includes("@gmail.com")) {
+            let aParticipant : Student = {email: this.email, password: this.password, userType:"Student"};
+            
+            //user is an enrolled participant
+            if (this.aSesionService.isParticipantEnrolled(aParticipant)) {
+                this.router.navigate(['/students'])
+            } else {
+                this.isSignInErr = true;
+                this.sigInErrorMessage = "Email or Password cannot be validated"
+            }
 
-      this.aSesionService.setCurrentUserInSession(this.sessionUser);
-      this.router.navigate(['/dashboard'])
+        //user is a program manager
+        } else {
+              let aManager : ProgManager = {email: this.email, password: this.password, userType:"Program Manager"};
+              console.log("Came here, created a a manager")
+              //manager is a valid manager
+              if (this.aSesionService.isManagerValid(aManager)) {
+                // this.router.navigate(['/students']) change to prog manager
+
+              } else {
+                console.log("Came here, valid entry but not program manger")
+                this.isSignInErr = true;
+                this.sigInErrorMessage = "Email or Password cannot be validated"
+              }
+              
+        }
+    }
+
   }
 
 }
