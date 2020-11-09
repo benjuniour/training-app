@@ -12,7 +12,16 @@ export class ProgPageComponent implements OnInit {
   progManagerEmail: string;
   progInSession: ProgManager;
   listOfParticipants: Student[];
+  listOfEvents: ProgramEvent[];
   shouldViewMoreDetails: boolean = false;
+
+  newEventTitle: string;
+  newEventLocation: string;
+  newEventLeader: string;
+  newEventID: string;
+  participantToAssign:string;
+
+  newEventDetails: ProgramEvent
 
   constructor(private sessionService: SessionService) { }
 
@@ -24,8 +33,10 @@ export class ProgPageComponent implements OnInit {
     this.progManangerName = this.progInSession.name;
     this.progManagerEmail = this.progInSession.email;
     
-    //use this to retrieve all the participants
+    //use this to retrieve all the participants and events
     this.listOfParticipants = this.sessionService.getEnrolledParticipants()
+    this.listOfEvents = this.sessionService.getAllTrainingEvents();
+
   }
 
   computeOverallProgress(studEvents: ProgramEvent[]): string {
@@ -39,8 +50,30 @@ export class ProgPageComponent implements OnInit {
       return ((eventCompletionCount/studEvents.length) * 100).toString()
     }
 
+    //shows or hides more detail
     showOrHideMoreEventDetails(): void {
       this.shouldViewMoreDetails = !this.shouldViewMoreDetails;
     }
 
+    //adds a new event
+    addNewEvent() {
+      this.newEventDetails = {
+        event_title: this.newEventTitle,
+        event_completion: "NO",
+        event_id: parseInt(this.newEventID),
+        location: this.newEventLocation,
+        leader: this.newEventLeader,
+      }
+      this.sessionService.addNewEventToDatabase(this.newEventDetails);
+      this.assignEventToParticipant();
+    }
+
+    assignEventToParticipant() {
+       //get which participant to assign to
+       let studentToAssign:Student = this.sessionService.getParticipantByName(this.participantToAssign);
+       if (studentToAssign !== undefined) {
+          studentToAssign.events.push(this.newEventDetails);
+       }
+       
+    }
 }

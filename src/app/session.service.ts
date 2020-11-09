@@ -97,11 +97,13 @@ export class SessionService {
   aUserInSession: Student|ProgManager;
   enrolledParticpants: Student[];
   listOfProgManagers: ProgManager[];
+  listOfEvents: ProgramEvent[];
 
 
   constructor() { 
     this.enrolledParticpants = [participant1, participant2];
     this.listOfProgManagers = [mainProgManager];
+    this.listOfEvents = [training1, training2, training3, training4];
   }
 
   //allows the signup screen to set the type of user in session to be used by the dashboard
@@ -114,6 +116,11 @@ export class SessionService {
     return this.aUserInSession;
   }
 
+  //gets all the events
+  getAllTrainingEvents(): ProgramEvent[] {
+    return this.listOfEvents;
+  }
+
   //would be used by the prog mananger to retrieve and add new participants
   getEnrolledParticipants() : Student[] {
     return this.enrolledParticpants;
@@ -122,6 +129,20 @@ export class SessionService {
   //adds a new participant
   addNewEnrolledParticipant(aNewParticipant: Student): void {
     this.enrolledParticpants.push(aNewParticipant)
+  }
+
+  //add new event
+  addNewEventToDatabase(aNewEvent: ProgramEvent) :void {
+    this.listOfEvents.push(aNewEvent);
+  }
+
+  getParticipantByName(participantName:string): Student {
+    for(let participant of this.enrolledParticpants){
+      if (participant.name === participantName) {
+        return participant
+      }
+    }
+    return undefined;
   }
 
   //checks if a participant is in our database
