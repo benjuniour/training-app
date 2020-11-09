@@ -1,45 +1,53 @@
 <div class="dashboard-header">
     <h1>Welcome to the Training Dashboard</h1>
     <h5><b>Email: </b>{{progManagerEmail}} </h5>
-    <h5><b>Name: </b>{{progManangerName}}</h5>
-</div>
+</div >
 
-<div *ngFor="let events of listOfEvents">
-    <p>{{events.event_title}}</p>
-</div>
-
-<div class="add-event-container">
-    <div class="inner-card-container">
-        <div class="card-header">
-            <h3>Add a new Training Event</h3>
-        </div>
+<div class="event-info-table-container">
+    <table class="event-table">
+        <tbody>
+            <tr>
+                <!-- for entering a new event -->
+                <td rowspan="0" width="50%">
+                    <div class="card-header">
+                        <h3>Add a new Training Event</h3>
+                    </div>
+                        
+                    <div class="event-field">
+                        <input type="text" [(ngModel)]="newEventTitle"  placeholder="Training Name">
+                    </div>
             
-        <div class="sign-in-fields">
-            <input type="text" [(ngModel)]="newEventTitle"  placeholder="Training Name">
-        </div>
-
-        <div class="sign-in-fields">
-            <input type="text" [(ngModel)]="newEventLocation"  placeholder="Training Location">
-        </div>
-
-        <div class="sign-in-fields">
-            <input type="text" [(ngModel)]="newEventLeader"  placeholder="Mentor">
-        </div>
-
-        <div class="sign-in-fields">
-            <input type="text" [(ngModel)]="newEventID"  placeholder="Event ID">
-        </div>
-
-        <div class="sign-in-fields">
-            <input type="text" [(ngModel)]="participantToAssign"  placeholder="Participant">
-        </div>            
-
-        <div class="sign-up-btn">
-            <button type="submit" (click) = "addNewEvent()">Add Event</button>
-        </div>
-    </div>    
+                    <div class="event-field">
+                        <input type="text" [(ngModel)]="newEventLocation"  placeholder="Training Location">
+                    </div>
+            
+                    <div class="event-field">
+                        <input type="text" [(ngModel)]="newEventLeader"  placeholder="Mentor">
+                    </div>
+            
+                    <div class="event-field">
+                        <input type="text" [(ngModel)]="newEventID"  placeholder="Event ID">
+                    </div>
+            
+                    <div class="event-field">
+                        <input type="text" [(ngModel)]="participantToAssign"  placeholder="Participant">
+                    </div>            
+            
+                    <div class="sign-up-btn">
+                        <button type="submit" (click) = "addNewEvent()">Add Event</button>
+                    </div> 
+                </td>
+                <!-- For only the event list -->
+                <td class="actual-event-list" rowspan="5">
+                    <div *ngFor="let events of listOfEvents">
+                        <p>{{events.event_title}}</p>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 </div>
-
+    
 
 <div>
     <table class="participants-table">
@@ -63,11 +71,11 @@
                 </td>
                 <td *ngIf="shouldViewMoreDetails" class="completions-status-data">
                     <div class="event-more-details" *ngFor="let studentEvent of studParticipant.events">
-                        <p>Training Type: {{studentEvent.event_title}}</p>
-                        <p>Training Completion: {{studentEvent.event_completion}}</p>
-                        <p>Training location: {{studentEvent.location}}</p>
-                        <p>Mentor: {{studentEvent.leader}}</p>
-                        <p>Training ID: {{studentEvent.event_id}}</p>
+                        <p><b>Training Type: </b> {{studentEvent.event_title}}</p>
+                        <p><b>Completion Status: </b> {{studentEvent.event_completion}}</p>
+                        <p><b>Training Location: </b> {{studentEvent.location}}</p>
+                        <p><b>Mentor: </b> {{studentEvent.leader}}</p>
+                        <p><b>Training ID: </b>{{studentEvent.event_id}}</p>
                         <br>
                     </div>
                     

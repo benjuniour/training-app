@@ -1,3 +1,4 @@
+import { ThrowStmt } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { ProgManager, ProgramEvent, SessionService, Student } from '../session.service';
 
@@ -66,6 +67,7 @@ export class ProgPageComponent implements OnInit {
       }
       this.sessionService.addNewEventToDatabase(this.newEventDetails);
       this.assignEventToParticipant();
+      this.resetFields()
     }
 
     assignEventToParticipant() {
@@ -73,7 +75,13 @@ export class ProgPageComponent implements OnInit {
        let studentToAssign:Student = this.sessionService.getParticipantByName(this.participantToAssign);
        if (studentToAssign !== undefined) {
           studentToAssign.events.push(this.newEventDetails);
-       }
-       
+       }  
+    }
+
+    resetFields() {
+      this.newEventTitle = "";
+      this.newEventID = "";
+      this.newEventLocation = "";
+      this.newEventLeader = "";
     }
 }

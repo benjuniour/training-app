@@ -3,6 +3,7 @@
     grid-template-columns: 3fr 1fr;
 } */
 
+
 .dashboard-header {
     display: block;
     width: fit-content;
@@ -25,11 +26,83 @@
     color: black;
     text-shadow: 2px 4px 3px rgba(0,0,0,0.3);
 }
+/* --------------------EVENT TABLE DISPLAY---------------------- */
+.event-info-table-container {
+    margin-bottom: 25px;
+}
 
+.event-table td {
+   table-layout: fixed;
+}
+
+.inner-card-container {
+    width: 335px;
+    height: 339px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 70px;
+}
+
+.card-header {
+   text-align: center;
+   line-height: 0px;
+}
+
+.card-header h3 {
+    font-family: 'Roboto', sans-serif;
+    color: #2997D6;
+    font-size: 24px;
+    font-weight: 500;;
+}
+
+
+input[type=text] {
+    width: 80%;
+    margin-bottom: 15px;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #2997D6;
+    border-radius: 20px;
+}
+
+input:focus {
+    outline: none !important;
+}
+
+.sign-up-btn {
+    text-align: center;
+}
+
+.sign-up-btn button {
+    width: 80%;
+    background-color: #2997D6;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 20px;
+}
+
+.sign-up-btn button {
+    outline: none;
+}
+
+.sign-up-btn button:hover {
+    opacity: 0.8;
+}
+
+.actual-event-list p {
+    font-family: 'Raleway', sans-serif;
+    font-size: large;
+}
+
+/* ----------------------------PARTICIPANT TABLE---------------------- */
 .participants-table {
     font-family: Arial, Helvetica, sans-serif;
     border-collapse: collapse;
     width: 100%;
+    margin-top: 50px;
 }
 
 
