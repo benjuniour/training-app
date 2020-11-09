@@ -1,0 +1,75 @@
+.main-window {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+}
+
+
+
+.dashboard-header {
+    display: block;
+    width: fit-content;
+    margin: auto auto;
+    line-height: 0;
+}
+
+.dashboard-header h1 {
+    font-family: 'Raleway', sans-serif;
+    color: #000000;
+    font-size:3vw;
+    text-align: center;
+    text-shadow: 2px 4px 3px rgba(179, 179, 179, 0.3);
+    margin-bottom: 40px;
+}
+
+.dashboard-header h5 {
+    text-align: center;
+    font-family: 'Raleway', sans-serif;
+    color: black;
+    text-shadow: 2px 4px 3px rgba(0,0,0,0.3);
+}
+
+.participants-table {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+
+.participants-table td, .participants-table th {
+    border: 1px solid #ddd;
+    padding: 15px;
+}
+.participants-table td {
+    font-size: 0.9rem;
+    padding-bottom: 1em;
+}
+
+.participants-table tr:nth-child(even){background-color: #f2f2f2;}
+
+/* .participants-table tr:hover {background-color: #ddd;} */
+
+
+.participants-table th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #2997D6;
+    color: white;
+}
+
+.completions-status-data button {
+    margin-left: 20px;
+    background-color:#2997D6;
+    color: white;
+    padding: 6px 20px;
+    border: none;
+    border-radius: 20px;
+}
+
+.completions-status-data button {
+    outline: none;
+}
+
+.completions-status-data button:hover {
+    opacity: 0.8;
+}

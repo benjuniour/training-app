@@ -1,9 +1,8 @@
 <div class="main">
     <div class="welcome-message-container">
-        <div class="header-m-1"><h1>Welcome to the</h1></div>
-        <div class="header-m-2"><h1>IT Development</h1></div>
-        <div class="header-m-3"><h1>Program</h1></div>
-        
+        <h1>Welcome to the</h1>
+        <h1>IT Development</h1>
+        <h1>Program</h1>
     </div>
 
 
@@ -18,15 +17,17 @@
             </div>
 
             <div class="sign-in-fields">
-                <input type="password" [(ngModel)]="password" placeholder="Password" >
+                <input type="password" [(ngModel)]="password" placeholder="Password" (keyup.enter)="onSubmit()" >
             </div>
             
             <div class="inner-card-footer">
                 <input type="checkbox" name="sign-reminder">
                 <label>Remember me the next time I signup</label>
+               
+                
             </div>
             
-            <p *ngIf="isSignInErr">{{sigInErrorMessage}}</p>
+            <p class="error-message" *ngIf="isSignInErr">*{{sigInErrorMessage}}</p>
 
             <div class="sign-up-btn">
                 <!-- <button type="submit" [disabled]="!f.valid">Sign Up</button> -->

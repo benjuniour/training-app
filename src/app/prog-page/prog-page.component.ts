@@ -12,6 +12,7 @@ export class ProgPageComponent implements OnInit {
   progManagerEmail: string;
   progInSession: ProgManager;
   listOfParticipants: Student[];
+  shouldViewMoreDetails: boolean = false;
 
   constructor(private sessionService: SessionService) { }
 
@@ -36,6 +37,10 @@ export class ProgPageComponent implements OnInit {
       }
       //computes the total percentage completion
       return ((eventCompletionCount/studEvents.length) * 100).toString()
+    }
+
+    showOrHideMoreEventDetails(): void {
+      this.shouldViewMoreDetails = !this.shouldViewMoreDetails;
     }
 
 }

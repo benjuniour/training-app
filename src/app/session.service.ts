@@ -26,48 +26,51 @@ export interface Student {
 
 
 //-------------Hardcoded Data-------------------
+let training1 :ProgramEvent = {
+  event_title: "Java SE Training",
+  event_id: 1,
+  event_completion: "No",
+  location: "Online",
+  leader: "Lindsay Boegel",
+}
+
+let training2 :ProgramEvent =  {
+  event_title: "Git Training",
+  event_id: 11,
+  event_completion: "No",
+  location: "Online",
+  leader: "Rachel Gilman",
+}
+
+let training3 :ProgramEvent = {
+  event_title: "React Training",
+  event_id: 12,
+  event_completion: "No",
+  location: "Online",
+  leader: "Rachael Balsamo",
+}
+
+let training4 :ProgramEvent = {
+  event_title: "Dev Ops Training",
+  event_id: 13,
+  event_completion: "No",
+  location: "Online",
+  leader: "Michelle Gonzalez",
+}
+
 
 let participant1: Student = {
     name: "Bernard Boadu",
     email: "bernardboadu@gmail.com",
     password: "password1",
-    events: [
-      {
-        event_title: "Fun Event",
-        event_id: 1,
-        event_completion: "No",
-        location: "Space 1",
-        leader: "Leader 1",
-      }
-      , {
-        event_title: "Fun Event II",
-        event_id: 11,
-        event_completion: "No",
-        location: "Space 1",
-        leader: "Leader 1",
-      }]
+    events: [training1, training2]
 }
 
 let participant2: Student = {
   name: "Alfred Marfo",
   email: "alfredmarfo@gmail.com",
   password: "password2",
-  events: [
-    {
-      event_title: "Fun Event",
-      event_id: 2,
-      event_completion: "No",
-      location: "Space 1",
-      leader: "Leader 1",
-    }, 
-    
-    {
-      event_title: "Fun Event II",
-      event_id: 21,
-      event_completion: "No",
-      location: "Space 1",
-      leader: "Leader 1",
-    }]
+  events: [training3, training4]
 }
 
 // let participant3: Student = {
@@ -80,7 +83,7 @@ let participant2: Student = {
 let mainProgManager: ProgManager = {
   name: "Master Program Manager",
   email: "masterprog@app.com",
-  password: "master"
+  password: "pass"
 }
 
 

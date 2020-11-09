@@ -1,0 +1,109 @@
+.main {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    overflow: auto;
+    background: url("/assets/images/home-background.jpg"); 
+    display: grid;
+    grid-template-columns: repeat(14, auto);
+    grid-template-rows: repeat(10, 100px);
+}
+
+.welcome-message-container {
+    grid-column: 1/6;
+    grid-row: 2/5;
+    margin-left: 20px;
+    padding: 0px;
+    line-height: 70px; /*removing line spaces between divs*/
+}
+
+h1{
+    font-family: 'Roboto Mono', monospace;
+    font-size: 10vh;
+    color: white;
+    text-shadow: 2px 4px 3px rgba(0,0,0,0.3);
+}
+
+.card-container {
+    display: block;
+    grid-column: 8/12;
+    grid-row:  3/8;
+    max-width: 450px;
+    max-height: 560px;
+    background-color: white;
+    border-radius: 15px;
+    border: 1px solid #888888;
+    box-shadow: 0.5px 0.8px 1px 0.5px #888888;
+}
+.inner-card-container {
+    width: 335px;
+    height: 339px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 70px;
+}
+
+.card-header {
+   text-align: center;
+}
+
+.card-header h3 {
+    font-family: 'Roboto', sans-serif;
+    color: #2997D6;
+    font-size: 24px;
+    font-weight: 500;;
+}
+
+
+.sign-in-fields {
+    text-align: center;
+}
+
+input[type=text], input[type=password] {
+    width: 80%;
+    margin-bottom: 15px;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #2997D6;
+    border-radius: 20px;
+}
+
+input:focus {
+    outline: none !important;
+}
+
+.inner-card-footer {
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.sign-up-btn {
+    text-align: center;
+}
+
+.sign-up-btn button {
+    width: 80%;
+    background-color: #2997D6;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 20px;
+}
+
+.sign-up-btn button {
+    outline: none;
+}
+
+.sign-up-btn button:hover {
+    opacity: 0.8;
+}
+
+.error-message {
+    text-align: center;
+    color: red;
+}

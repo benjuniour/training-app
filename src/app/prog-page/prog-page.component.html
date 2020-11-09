@@ -1,11 +1,53 @@
-<app-dashboard></app-dashboard>
-<h3>Welcome {{progManangerName}}</h3>
-<h5>Your email is {{progManagerEmail}}</h5>
+<div class="dashboard-header">
+    <h1>Welcome to the Training Dashboard</h1>
+    <h5><b>Email: </b>{{progManagerEmail}} </h5>
+    <h5><b>Name: </b>{{progManangerName}}</h5>
+</div>
 
-<p>You're in Program Manager Dashboard</p>
-<p>------------------------------------------</p>
+<div class="main-window">
+    <table class="participants-table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Training Sessions</th>
+                <th>Total Completion Status</th>
+            </tr>
+        </thead>
+        <tbody *ngFor="let studParticipant of listOfParticipants">
+            <tr>
+                <td>{{studParticipant.name}}</td>
+                <td>{{studParticipant.email}}</td>
+                <td>{{studParticipant.events.length}}</td>
+                
+                <td *ngIf="!shouldViewMoreDetails" class="completions-status-data">
+                    {{computeOverallProgress(studParticipant.events)}}%
+                    <button (click)="showOrHideMoreEventDetails()">More details</button>
+                </td>
+                <td *ngIf="shouldViewMoreDetails" class="completions-status-data">
+                    <div class="event-more-details" *ngFor="let studentEvent of studParticipant.events">
+                        <p>Training Type: {{studentEvent.event_title}}</p>
+                        <p>Training Completion: {{studentEvent.event_completion}}</p>
+                        <p>Training location: {{studentEvent.location}}</p>
+                        <p>Mentor: {{studentEvent.leader}}</p>
+                        <p>Training ID: {{studentEvent.event_id}}</p>
+                        <br>
+                    </div>
+                    
+                    <button (click)="showOrHideMoreEventDetails()">Hide details</button>
+                </td>
+            </tr>
+        </tbody> 
+    </table>
 
-<div *ngFor="let studParticipant of listOfParticipants">
+</div>
+
+
+
+
+
+
+<!-- <div *ngFor="let studParticipant of listOfParticipants">
     <p>{{studParticipant.name}}</p>
     <p>{{studParticipant.email}}</p>
     <div *ngFor="let studentEvent of studParticipant.events">
@@ -18,5 +60,5 @@
     <br>
     <p>Total Progress:{{computeOverallProgress(studParticipant.events)}}%</p>
     <p>------------------------------------------</p>
-    <!-- <button (click)="AddNewParticipant">Completed</button> -->
-</div>
+    <button (click)="AddNewParticipant">Completed</button> 
+</div> -->

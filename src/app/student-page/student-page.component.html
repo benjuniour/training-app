@@ -1,10 +1,34 @@
-<app-dashboard></app-dashboard>
-<h3>Welcome {{studentName}}</h3>
-<h5>Your email is {{studentEmail}}</h5>
+<div class="background">
+    <div class="dashboard-header">
+        <h1>Welcome to the Training Dashboard</h1>
+        <h5><b>Email: </b>{{studentName}} </h5>
+        <h5><b>Name: </b>{{studentEmail}}</h5>
+    </div>
 
-<p>You're in a Participant Dashboard</p>
+    <table  class="participants-table">
+        <thead><tr><th>Training Information</th></tr></thead>
+        <tbody *ngFor="let studentEvent of studentEvents">
+            <tr>
+                <td class="event-info">
+                    <img src="assets\images\first event.jpg">
+                    <br>
+                    <p><b>Training Type: </b>{{studentEvent.event_title}}</p>
+                    <p><b>Training location: </b>{{studentEvent.location}}</p>
+                    <p><b>Mentor: </b>{{studentEvent.leader}}</p>
+                    <p><b>Training ID: </b>{{studentEvent.event_id}}</p>
+                    <p><b>Completion status: </b>{{studentEvent.event_completion}}</p>
+                    <button (click)="updateEventStatus(studentEvent.event_id)">Completed</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 
-<div *ngFor="let studentEvent of studentEvents">
+</div>
+
+
+
+
+<!-- <div *ngFor="let studentEvent of studentEvents">
     <p>{{studentEvent.event_title}}</p>
     <p>{{studentEvent.event_completion}}</p>
     <p>{{studentEvent.location}}</p>
@@ -13,6 +37,6 @@
     <br>
 
     <button (click)="updateEventStatus(studentEvent.event_id)">Completed</button>
-</div>
+</div> -->
 
 
